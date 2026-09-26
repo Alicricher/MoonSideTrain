@@ -29,6 +29,11 @@ def get_tasks():
     with tasks_lock:
         return list_tasks(load_tasks())
 
+@app.get("/task/{task_id}", response_model=Task)
+def get_task(task_id: int):
+    with tasks_lock:
+        return load_task(task_id)
+
 
 @app.post("/tasks", response_model=Task, status_code=201)
 def create_task(body: TaskCreate):

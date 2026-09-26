@@ -11,6 +11,13 @@ def load_tasks():
     with TASKS_FILE.open(encoding="utf-8") as file:
         return json.load(file)
 
+def load_task(id):
+    if not TASKS_FILE.exists():
+        return []
+    with TASKS_FILE.open(encoding="utf-8") as file:
+        for task in tasks:
+            if task["id"] == id:
+                return task
 
 def save_tasks(tasks):
     with TASKS_FILE.open("w", encoding="utf-8") as file:
