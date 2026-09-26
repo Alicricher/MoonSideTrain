@@ -6,17 +6,12 @@ def add_task(tasks, title):
 
 
 def list_tasks(tasks):
-    if not tasks:
-        print("Пока задач нет.")
-        return
-
-    for task in tasks:
-        print(f"ID: {task['id']} | {task['title']} | {task['status']}")
+    return tasks
 
 
 def complete_task(tasks, task_id):
     for task in tasks:
         if task["id"] == task_id:
             task["status"] = "DONE"
-            return True
-    return False
+            return task
+    return None

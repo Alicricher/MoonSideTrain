@@ -60,10 +60,11 @@ git switch -c feature/delete-task
 - `feature/task-priority` — приоритет.
 - `feature/search-tasks` — поиск.
 
-После написания кода:
+Установите зависимости по README. После написания кода проверьте API
+через http://127.0.0.1:8000/docs, остановите сервер (Ctrl+C) и сделайте коммит:
 
 ```bash
-python3 main.py
+python -m uvicorn main:app --reload
 git status
 git diff
 git add main.py task_manager.py
@@ -98,7 +99,7 @@ git merge origin/main
 ```
 
 Исправьте конфликтующие файлы: объедините нужный код и удалите маркеры
-`<<<<<<<`, `=======`, `>>>>>>>`. Запустите программу, затем:
+`<<<<<<<`, `=======`, `>>>>>>>`. Проверьте API через /docs, затем:
 
 ```bash
 git add main.py task_manager.py
