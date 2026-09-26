@@ -6,10 +6,10 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from storage import load_tasks, save_tasks
 from task_manager import add_task, complete_task, list_tasks
-
-
+from searchmodule import roter as search_route
 app = FastAPI(title="Task Manager API")
 # Protect JSON read-modify-write operations within a single server process.
+app.include_router(search_route)
 tasks_lock = Lock()
 
 
